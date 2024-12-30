@@ -36,13 +36,6 @@ runs:
       - name: Semantic Release Version
         id: semantic_release
         uses: cycjimmy/semantic-release-action@v4
-        with:
-          branches: '["main"]'
-          extra_plugins: |
-            @semantic-release/commit-analyzer
-            @semantic-release/release-notes-generator
-            @semantic-release/changelog
-            @semantic-release/github
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
