@@ -39,6 +39,29 @@ runs:
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
+          RELEASE_CONFIG: |
+            {
+              "branches": [
+                "main"
+              ],
+              "plugins": [
+                [
+                  "@semantic-release/commit-analyzer",
+                  {
+                    "preset": "conventionalcommits",
+                    "releaseRules": [
+                      { "type": "feat!", "release": "major" },
+                      { "type": "feat", "release": "minor" },
+                      { "type": "fix", "release": "patch" },
+                      { "type": "chore", "release": "patch" }
+                    ]
+                  }
+                ],
+                "@semantic-release/release-notes-generator",
+                "@semantic-release/changelog",
+                "@semantic-release/github"
+              ]
+            }
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
