@@ -48,7 +48,7 @@ runs:
                 [
                   "@semantic-release/commit-analyzer",
                   {
-                    "preset": "conventionalcommits",
+                    "preset": "angular",
                     "releaseRules": [
                       { "type": "feat!", "release": "major" },
                       { "type": "feat", "release": "minor" },
