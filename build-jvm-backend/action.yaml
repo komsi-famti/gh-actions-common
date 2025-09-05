@@ -38,6 +38,12 @@ runs:
         with:
           distribution: 'temurin'
           java-version: ${{ inputs.javaVersion }}
+      - name: Build with Gradle
+        shell: bash
+        run: echo "$GH_TOKEN"
+        env:
+          GH_ACTOR: ${{ github.actor }}
+          GH_TOKEN: ${{ inputs.githubToken }}
       - name: Semantic Release Version
         id: semantic_release
         uses: cycjimmy/semantic-release-action@v4
