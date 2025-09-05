@@ -20,6 +20,10 @@ inputs:
   imageName:
     description: 'The name of the Docker image to build and push'
     required: true
+  dockerContext:
+    description: 'Docker context'
+    default: .
+    required: false
 
 runs:
     using: 'composite'
@@ -67,7 +71,7 @@ runs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ${{ inputs.dockerContext }}
           push: true
           tags: |
             ${{ inputs.imageRegistry }}/${{ inputs.imageRegistryUser }}/${{ inputs.imageName }}:latest,
