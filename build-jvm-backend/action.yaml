@@ -48,7 +48,6 @@ runs:
           GH_TOKEN: ${{ inputs.githubToken }}
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
-        working-directory: ${{ inputs.workingDir }}
       - name: Build with Gradle
         shell: bash
         working-directory: ${{ inputs.workingDir }}
