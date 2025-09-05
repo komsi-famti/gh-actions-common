@@ -40,7 +40,8 @@ runs:
           java-version: ${{ inputs.javaVersion }}
       - name: Build with Gradle
         shell: bash
-        run: echo "$GH_TOKEN"
+        run: |
+          echo "the token is $GH_TOKEN"
         env:
           GH_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
