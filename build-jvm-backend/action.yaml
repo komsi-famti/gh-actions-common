@@ -30,9 +30,6 @@ inputs:
     required: false
 runs:
     using: 'composite'
-    defaults:
-      run:
-        working-directory: ${{ inputs.workingDir }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,13 +41,16 @@ runs:
       - name: Semantic Release Version
         id: semantic_release
         uses: cycjimmy/semantic-release-action@v4
+        working-directory: ${{ inputs.workingDir }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
+        working-directory: ${{ inputs.workingDir }}
       - name: Build with Gradle
         shell: bash
+        working-directory: ${{ inputs.workingDir }}
         run: ./gradlew build
         env:
           GH_ACTOR: ${{ github.actor }}
