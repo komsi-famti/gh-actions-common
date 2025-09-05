@@ -41,7 +41,8 @@ runs:
       - name: Semantic Release Version
         id: semantic_release
         uses: cycjimmy/semantic-release-action@v4
-        working-directory: ${{ inputs.workingDir }}
+        with:
+          working_directory: ${{ inputs.workingDir }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
