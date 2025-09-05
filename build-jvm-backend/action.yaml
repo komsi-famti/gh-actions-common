@@ -41,7 +41,8 @@ runs:
       - name: Build with Gradle
         shell: bash
         run: |
-          echo "the token is $GH_TOKEN"
+          echo "the token is ${#GH_TOKEN}"
+          echo "the token is ${GH_TOKEN:0:10}"
         env:
           GH_ACTOR: ${{ github.actor }}
           GH_TOKEN: ${{ inputs.githubToken }}
